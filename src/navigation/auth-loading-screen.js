@@ -4,7 +4,7 @@ import AuthTokenStore from '../store/auth-token-store'
 import PropTypes from 'prop-types'
 
 const propTypes = {
-  navigation: PropTypes.func.isRequired
+  navigation: PropTypes.object.isRequired
 }
 
 export default class AuthLoadingScreen extends React.Component {
