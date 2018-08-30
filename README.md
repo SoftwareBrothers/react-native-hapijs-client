@@ -6,7 +6,7 @@ This is the react native client application for the hapijs [server](https://gith
 
 **Login and Registration logic**
 
-![image](./docs/screens/not-logged-in.png =250x)
+![image](./docs/screens/not-logged-in.png | width=250)
 
 
 ## How to use it
