@@ -6,8 +6,16 @@ This is the react native client application for the hapijs [server](https://gith
 
 **Login and Registration logic**
 
-![image](./docs/screens/not-logged-in.png | width=250)
+<img src="./docs/screens/not-logged-in.png" width=250 />
 
+**Linter configuration**
+
+just run `npm lint` to perform all checks
+
+**Automated tests**
+
+Application has `jest` with `enzyme` configured.
+just run `npm test` to perform test
 
 ## How to use it
 
