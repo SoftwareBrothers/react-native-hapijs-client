@@ -6,7 +6,7 @@ This is the react native client application for the hapijs [server](https://gith
 
 **Login and Registration logic**
 
-<img src="./docs/screens/not-logged-in.png" width=250 />
+<img src="./docs/screens/not-logged-in.png" width=250 style="border: 1px solid #ccc" />
 
 **Linter configuration**
 
