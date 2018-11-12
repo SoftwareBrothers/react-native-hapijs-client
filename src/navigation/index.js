@@ -4,20 +4,18 @@ import LoginScreen from './login-screen'
 import RegisterScreen from './register-screen'
 import AuthLoadingScreen from './auth-loading-screen'
 
-
-
 const AppStack = createStackNavigator({
   Home: HomeScreen,
 })
-const AuthStack = createStackNavigator({ 
+const AuthStack = createStackNavigator({
   authIndex: {
     screen: createMaterialTopTabNavigator({
       Login: LoginScreen,
-      Register: RegisterScreen
+      Register: RegisterScreen,
     }),
     navigationOptions: {
-      headerTitle: 'Not logged in'
-    }
+      headerTitle: 'Not logged in',
+    },
   },
 })
 
@@ -29,5 +27,5 @@ export default createSwitchNavigator(
   },
   {
     initialRouteName: 'AuthLoading',
-  }
+  },
 )

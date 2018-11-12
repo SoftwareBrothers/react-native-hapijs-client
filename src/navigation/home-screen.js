@@ -1,21 +1,21 @@
 import React from 'react'
 import { View, Button } from 'react-native'
+import PropTypes from 'prop-types'
 import AuthTokenStore from '../store/auth-token-store'
 
-import PropTypes from 'prop-types'
-
 const propTypes = {
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 }
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
-  
     this.store = new AuthTokenStore()
   }
 
-  handleSignOut(){
+  handleSignOut() {
     this.store.clear()
     this.props.navigation.navigate('Auth')
   }
@@ -24,7 +24,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View>
         <Button
-          title='Sign out'
+          title="Sign out"
           onPress={() => this.handleSignOut()}
         />
       </View>
@@ -33,7 +33,7 @@ export default class HomeScreen extends React.Component {
 }
 
 HomeScreen.navigationOptions = {
-  title: 'Welcome Home'
+  title: 'Welcome Home',
 }
 
 HomeScreen.propTypes = propTypes

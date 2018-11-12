@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native'
 
 export default class AuthTokenStore {
-  constructor(){
+  constructor() {
     this.key = 'jwtToken'
   }
 
@@ -9,11 +9,11 @@ export default class AuthTokenStore {
     await AsyncStorage.setItem(this.key, token)
   }
 
-  async load(){
-    return await AsyncStorage.getItem(this.key)
+  async load() {
+    return AsyncStorage.getItem(this.key)
   }
 
   async clear() {
-    await AsyncStorage.removeItem(this.key)
+    return AsyncStorage.removeItem(this.key)
   }
 }

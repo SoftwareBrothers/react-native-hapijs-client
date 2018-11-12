@@ -1,42 +1,44 @@
-import AuthBaseScreen from './auth-base'
-import { Alert } from 'react-native'
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import PropTypes from 'prop-types'
+import LoginForm from '../components/login-form'
 import ApiClient from '../services/api-client'
 import AuthTokenStore from '../store/auth-token-store'
 
-export default class LoginScreen extends AuthBaseScreen {
+const propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+}
+
+const style = StyleSheet.create({
+  container: {
+    backgroundColor: '#ffffff',
+    padding: 20,
+    flex: 1,
+  },
+})
+
+export default class LoginScreen extends React.Component {
   constructor(props) {
     super(props)
     this.api = new ApiClient()
     this.store = new AuthTokenStore()
   }
-  
-  async submit(form) {
-    if (form.valid()) {
-      this.setState(Object.assign(this.state, {
-        loading: true
-      }))
-      let errorMessage = null
-      try {
-        const response = await this.api.signIn(form.getValues())
-        this.store.save(response.data.token)
-      } catch (error) {
-        switch(error.response.status){
-        case 403:
-          errorMessage = 'Wrong email and/or password'
-          break
-        default:
-          errorMessage = 'Api error'
-        }
-      }
-      this.setState(Object.assign(this.state, {
-        loading: false
-      }))
 
-      if (errorMessage) {
-        Alert.alert(errorMessage)
-      } else {
-        this.props.navigation.navigate('AuthLoading')
-      }
-    }
+  async submit(values) {
+    const response = await this.api.signIn(values)
+    this.store.save(response.data.token)
+    this.props.navigation.navigate('AuthLoading')
+  }
+
+  render() {
+    return (
+      <View style={style.container}>
+        <LoginForm onSubmit={values => this.submit(values)} />
+      </View>
+    )
   }
 }
+
+LoginScreen.propTypes = propTypes

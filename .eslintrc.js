@@ -5,8 +5,7 @@ module.exports = {
         "jest/globals": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
+        "airbnb"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -17,7 +16,7 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "jest"
+        "jest",
     ],
     "globals": {
         "process": true
@@ -38,8 +37,23 @@ module.exports = {
         "semi": [
             "error",
             "never"
-        ]
+        ],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/destructuring-assignment": [
+            "error",
+            "never"
+        ],
     },
+    "overrides": [
+        {
+          "files": ["*-test.js","*.spec.js"],
+          "rules": {
+            "no-unused-expressions": "off",
+            "func-names": "off",
+            "prefer-arrow-callback": "off"
+          }
+        }
+    ],
     "settings": {
         "react": {
           "version": "16.0"
