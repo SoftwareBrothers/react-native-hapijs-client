@@ -44,16 +44,6 @@ module.exports = {
             "never"
         ],
     },
-    "overrides": [
-        {
-          "files": ["*-test.js","*.spec.js"],
-          "rules": {
-            "no-unused-expressions": "off",
-            "func-names": "off",
-            "prefer-arrow-callback": "off"
-          }
-        }
-    ],
     "settings": {
         "react": {
           "version": "16.0"
